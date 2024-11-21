@@ -5,6 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegAndAuth.RegPage"
+			 xmlns:conv="using:RegAndAuth.Converters"
 			 x:DataType="vm:RegPageVM">
-  Welcome to Avalonia!
+
+	<UserControl.Resources>
+		<conv:MyConvertImage x:Key="MyConvertImage"></conv:MyConvertImage>
+	</UserControl.Resources>
+
+	<StackPanel>
+		<Button Command="">Добавить фото</Button>
+		<TextBox Watermark="Введите ФИО"></TextBox>
+		<TextBox Watermark="Введите логин"></TextBox>
+		<TextBox Watermark="Введите пароль"></TextBox>
+		<Button Command="">Зарегистрировать администратора</Button>
+	</StackPanel>
 </UserControl>
