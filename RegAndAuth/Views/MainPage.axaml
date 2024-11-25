@@ -9,9 +9,9 @@
 	<Grid>
 		<StackPanel>
 			<TextBlock Text="Добро пожаловать, новый пользователь! Для дальнейшей работы необходимо авторизоваться или зарегестрироваться."></TextBlock>
-			<Button Content="Авторизация" Command="{Binding ToAuthPage}"></Button>
-			<Button Content="Регистрация" Command="{Binding ToRegPage}"></Button>
-			<Button Content="Зарегистрировать администратора" Command="{Binding ToRegPage}"></Button>
+			<Button Content="Авторизация" Command="{Binding ToAuthPage}" IsVisible="{Binding IsVisibleAuthBT}"></Button>
+			<Button Content="Регистрация" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBT}"></Button>
+			<Button Content="Зарегистрировать администратора" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBTAdmin}"></Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

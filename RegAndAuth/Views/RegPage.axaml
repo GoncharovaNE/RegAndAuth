@@ -13,10 +13,10 @@
 	</UserControl.Resources>
 
 	<StackPanel>
-		<Button Command="">Добавить фото</Button>
-		<TextBox Watermark="Введите ФИО"></TextBox>
-		<TextBox Watermark="Введите логин"></TextBox>
-		<TextBox Watermark="Введите пароль"></TextBox>
-		<Button Command="">Зарегистрировать администратора</Button>
+		<Button Command="{Binding AddOnePhoto}">Добавить фото</Button>
+		<TextBox Watermark="Введите ФИО" Text="{Binding NewUser.Fio}"></TextBox>
+		<TextBox Watermark="Введите логин" Text="{Binding NewUser.Login}"></TextBox>
+		<TextBox Watermark="Введите пароль" Text="{Binding NewPassword}"></TextBox>
+		<Button Command="{Binding Adduser}">Зарегистрировать администратора</Button>
 	</StackPanel>
 </UserControl>
