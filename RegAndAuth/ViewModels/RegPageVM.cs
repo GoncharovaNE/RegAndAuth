@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
 using Avalonia;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 
 namespace RegAndAuth.ViewModels
 {
@@ -25,28 +27,63 @@ namespace RegAndAuth.ViewModels
 
         string _newPassword;
 
-        public string NewPassword { get => _newPassword; set => _newPassword = value; }        
+        public string NewPassword { get => _newPassword; set => _newPassword = value; }
 
-        public void Adduser()
-        {
-            List<Role> roles = MainWindowViewModel.myConnection.Roles.ToList();
-            if (!UsersList.Any(x => x.Role == 1))
+        string strBTReg;
+        public string StrBTReg 
+        { 
+            get
             {
-                NewUser.Role = 1;
-                NewUser.RoleNavigation = roles[0];
+                if (!UsersList.Any(x => x.Role == 1))
+                {
+                    return strBTReg = "Зарегистрировать администратора";
+                }
+                return strBTReg = "Зарегистрировать пользователя";
+            }
+            set => this.RaiseAndSetIfChanged(ref strBTReg, value); 
+        }
+
+        public async void Adduser()
+        {
+            if (NewUser.Fio != null && NewUser.Login != null)
+            {
+                if (UsersList.Any(x => x.Login == NewUser.Login))
+                {
+                    string Messege = "Пользователь с таким логином уже существует!";
+                    ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                }
+                else
+                {
+                    List<Role> roles = MainWindowViewModel.myConnection.Roles.ToList();
+                    if (!UsersList.Any(x => x.Role == 1))
+                    {
+                        NewUser.Role = 1;
+                        NewUser.RoleNavigation = roles[0];
+                    }
+                    else
+                    {
+                        NewUser.Role = 2;
+                        NewUser.RoleNavigation = roles[1];
+                    }
+                    if (_newPassword != string.Empty)
+                    {
+                        NewUser.Password = MD5.HashData(Encoding.ASCII.GetBytes(NewPassword));
+                        MainWindowViewModel.myConnection.Users.Add(NewUser);
+                        MainWindowViewModel.myConnection.SaveChanges();
+                        MainWindowViewModel.Instance.Uc = new MainPage();
+                    }
+                    else
+                    {
+                        string Messege = "Поле с паролем является обязательным!";
+                        ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                    }                    
+                }                
             }
             else
             {
-                NewUser.Role = 2;
-                NewUser.RoleNavigation = roles[1];
-            }
-            if (_newPassword != string.Empty)
-            {
-                NewUser.Password = MD5.HashData(Encoding.ASCII.GetBytes(NewPassword));                
-            }
-            MainWindowViewModel.myConnection.Users.Add(NewUser);
-            MainWindowViewModel.myConnection.SaveChanges();
-            MainWindowViewModel.Instance.Uc = new MainPage();
+                string Messege = "Необходимо заполнить все поля!";
+                ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+            }            
         }
 
         public async Task AddOnePhoto()
@@ -69,7 +106,6 @@ namespace RegAndAuth.ViewModels
                 NewUser.Image = buffer;
 
                 MainWindowViewModel.myConnection.SaveChanges();
-                MainWindowViewModel.Instance.Uc = new PersonPage();
             }
         }
     }

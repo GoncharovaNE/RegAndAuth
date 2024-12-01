@@ -17,6 +17,6 @@
 		<TextBox Watermark="Введите ФИО" Text="{Binding NewUser.Fio}"></TextBox>
 		<TextBox Watermark="Введите логин" Text="{Binding NewUser.Login}"></TextBox>
 		<TextBox Watermark="Введите пароль" Text="{Binding NewPassword}"></TextBox>
-		<Button Command="{Binding Adduser}">Зарегистрировать администратора</Button>
+		<Button Command="{Binding Adduser}" Content="{Binding StrBTReg}"></Button>
 	</StackPanel>
 </UserControl>
