@@ -5,14 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegAndAuth.RegPage"
-			 xmlns:conv="using:RegAndAuth.Converters"
 			 x:DataType="vm:RegPageVM">
 
-	<UserControl.Resources>
-		<conv:MyConvertImage x:Key="MyConvertImage"></conv:MyConvertImage>
-	</UserControl.Resources>
-
 	<StackPanel>
+		<Button Command="{Binding ToMainPage}">Отменить</Button>
 		<Button Command="{Binding AddOnePhoto}">Добавить фото</Button>
 		<TextBox Watermark="Введите ФИО" Text="{Binding NewUser.Fio}"></TextBox>
 		<TextBox Watermark="Введите логин" Text="{Binding NewUser.Login}"></TextBox>

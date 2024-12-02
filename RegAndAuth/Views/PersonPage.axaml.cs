@@ -10,6 +10,10 @@ public partial class PersonPage : UserControl
     public PersonPage()
     {
         InitializeComponent();
-        DataContext = new PersonPageVM();
+    }
+    public PersonPage(int id)
+    {
+        InitializeComponent();
+        DataContext = new PersonPageVM(id);
     }
 }

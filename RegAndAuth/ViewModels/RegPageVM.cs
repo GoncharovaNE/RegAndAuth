@@ -12,6 +12,8 @@ using Avalonia.Platform.Storage;
 using Avalonia;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
+using System.Text.RegularExpressions;
+using Tmds.DBus.Protocol;
 
 namespace RegAndAuth.ViewModels
 {
@@ -66,11 +68,23 @@ namespace RegAndAuth.ViewModels
                         NewUser.RoleNavigation = roles[1];
                     }
                     if (_newPassword != string.Empty)
-                    {
-                        NewUser.Password = MD5.HashData(Encoding.ASCII.GetBytes(NewPassword));
-                        MainWindowViewModel.myConnection.Users.Add(NewUser);
-                        MainWindowViewModel.myConnection.SaveChanges();
-                        MainWindowViewModel.Instance.Uc = new MainPage();
+                    {                        
+                        if (checkPassword(_newPassword) == "Пароль корректен.")
+                        {
+                            string Messege = "Пароль корректен!";
+                            ButtonResult result1 = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                            NewUser.Password = MD5.HashData(Encoding.ASCII.GetBytes(NewPassword));
+                            MainWindowViewModel.myConnection.Users.Add(NewUser);
+                            MainWindowViewModel.myConnection.SaveChanges();
+                            Messege = "Регистрация прошла успешно!";
+                            ButtonResult result2 = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                            MainWindowViewModel.Instance.Uc = new MainPage();
+                        }
+                        else
+                        {
+                            string Messege = checkPassword(_newPassword);
+                            ButtonResult result1 = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                        }                        
                     }
                     else
                     {
@@ -84,6 +98,29 @@ namespace RegAndAuth.ViewModels
                 string Messege = "Необходимо заполнить все поля!";
                 ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
             }            
+        }
+
+        public string checkPassword(string pass)
+        {
+            Regex reg = new Regex(@"^(?=(.*[A-Z]){2,})(?=(.*[a-z]){3,})(?=(.*\d){2,})(?!^\d)[A-Za-z\d]{8,}$");
+            if (pass.Length < 8)
+                return "Пароль должен быть не менее 8 символов.";
+
+            if (!Regex.IsMatch(pass, @"[A-Z].*[A-Z]"))
+                return "Пароль должен содержать не менее 2 заглавных латинских символов.";
+
+            if (!Regex.IsMatch(pass, @"[a-z].*[a-z].*[a-z]"))
+                return "Пароль должен содержать не менее 3 строчных латинских символов.";
+
+            if (!Regex.IsMatch(pass, @"\d.*\d"))
+                return "Пароль должен содержать не менее 2 цифр.";
+
+            if (Regex.IsMatch(pass, @"^\d"))
+                return "Пароль не должен начинаться с цифры.";
+
+            if (!reg.IsMatch(pass))
+                return "Пароль содержит некорректные символы.";
+            return "Пароль корректен.";
         }
 
         public async Task AddOnePhoto()
@@ -106,7 +143,14 @@ namespace RegAndAuth.ViewModels
                 NewUser.Image = buffer;
 
                 MainWindowViewModel.myConnection.SaveChanges();
+                string Messege = "Изображение успешно добавлено!";
+                ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
             }
+        }
+
+        public void ToMainPage()
+        {
+            MainWindowViewModel.Instance.Uc = new MainPage();
         }
     }
 }

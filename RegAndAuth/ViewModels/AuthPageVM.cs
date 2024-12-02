@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RegAndAuth.Models;
 using RegAndAuth.Views;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
 
 namespace RegAndAuth.ViewModels
 {
@@ -18,14 +21,26 @@ namespace RegAndAuth.ViewModels
         public string Login { get => _login; set => _login = value; }
         public string Password { get => _password; set => _password = value; }
 
-        public void AuthUser()
+        public async void AuthUser()
         {
             byte[] _hashPassword = MD5.HashData(Encoding.ASCII.GetBytes(_password));
             User user = MainWindowViewModel.myConnection.Users.Include(x => x.RoleNavigation).FirstOrDefault(x => x.Login == _login && x.Password == _hashPassword);
             if (user != null)
             {
-                MainWindowViewModel.Instance.Uc = new PersonPage();
+                string Messege = "Авторизация прошла успешно!";
+                ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+                MainWindowViewModel.Instance.Uc = new PersonPage(user.Iduser);
             }
+            else
+            {
+                string Messege = "Пользователь не найден!";
+                ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение с уведомлением!", Messege, ButtonEnum.Ok).ShowAsync();
+            }
+        }
+
+        public void ToMainPage()
+        {
+            MainWindowViewModel.Instance.Uc = new MainPage();
         }
     }
 }

@@ -7,6 +7,7 @@
              x:Class="RegAndAuth.AuthPage"
 			 x:DataType="vm:AuthPageVM">
 	<StackPanel>
+		<Button Command="{Binding ToMainPage}">Отменить</Button>
 		<TextBox Watermark="Введите логин" Text="{Binding Login}"></TextBox>
 		<TextBox Watermark="Введите пароль" Text="{Binding Password}"></TextBox>
 		<Button Command="{Binding AuthUser}">Авторизоваться</Button>

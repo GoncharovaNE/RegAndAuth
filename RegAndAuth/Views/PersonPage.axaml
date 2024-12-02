@@ -5,6 +5,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegAndAuth.PersonPage"
+			 xmlns:conv="using:RegAndAuth.Converters"
 			 x:DataType="vm:PersonPageVM">
-  
+
+	<UserControl.Resources>
+		<conv:MyConvertImage x:Key="MyConvertImage"></conv:MyConvertImage>
+	</UserControl.Resources>
+
+	<StackPanel>
+		<StackPanel>
+			<TextBlock>
+				<TextBlock.Text>
+					<MultiBinding StringFormat="{} Добро пожаловать, {0} {1}">
+						<Binding Path="User.RoleNavigation.Namerole"/>
+						<Binding Path="User.Login"/>
+					</MultiBinding>
+				</TextBlock.Text>
+			</TextBlock>
+			<Button Command="{Binding AddOnePhoto}">Изменить фото</Button>
+			<Button Command="{Binding ToMainPage}">Вернуться на главную страницу</Button>
+			<Image Height="300" Width="300" Source="{Binding User.Image,Converter={StaticResource MyConvertImage}}" HorizontalAlignment="Center"></Image>
+			<TextBlock Text="{Binding User.Fio}" HorizontalAlignment="Center"></TextBlock>
+		</StackPanel>
+	</StackPanel>
 </UserControl>
