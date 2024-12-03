@@ -24,8 +24,8 @@
 			</TextBlock>
 			<Image Classes="MainPage_Im" Source="{Binding User.Image,Converter={StaticResource MyConvertImage}}"></Image>
 			<TextBlock Classes="MainPage_Hi" Text="{Binding User.Fio}"></TextBlock>
-			<Button Classes="MyTB" Command="{Binding AddOnePhoto}">Изменить фото</Button>
-			<Button Classes="MyTB" Command="{Binding ToMainPage}">Главное меню</Button>
+			<Button Classes="MyBT" Command="{Binding AddOnePhoto}">Изменить фото</Button>
+			<Button Classes="MyBT" Command="{Binding ToMainPage}">Главное меню</Button>
 		</StackPanel>
 	</StackPanel>
 </UserControl>

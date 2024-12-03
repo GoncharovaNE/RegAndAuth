@@ -8,11 +8,11 @@
 			 x:DataType="vm:RegPageVM">
 
 	<StackPanel>
-		<Button Classes="MyTB" Command="{Binding ToMainPage}">Отменить</Button>
-		<Button Classes="MyTB" Command="{Binding AddOnePhoto}">Добавить фото</Button>
-		<TextBox Watermark="Введите ФИО" Text="{Binding NewUser.Fio}"></TextBox>
-		<TextBox Watermark="Введите логин" Text="{Binding NewUser.Login}"></TextBox>
-		<TextBox Watermark="Введите пароль" Text="{Binding NewPassword}"></TextBox>
-		<Button Classes="MyTB" Command="{Binding Adduser}" Content="Зарегистрироваться"></Button>
+		<Button Classes="MyBT" Command="{Binding ToMainPage}">Отменить</Button>
+		<Button Classes="MyBT" Command="{Binding AddOnePhoto}">Добавить фото</Button>
+		<TextBox Classes="MyTB" Watermark="Введите ФИО" Text="{Binding NewUser.Fio}"></TextBox>
+		<TextBox Classes="MyTB" Watermark="Введите логин" Text="{Binding NewUser.Login}"></TextBox>
+		<TextBox Classes="MyTB" Watermark="Введите пароль" Text="{Binding NewPassword}"></TextBox>
+		<Button Classes="MyBT" Command="{Binding Adduser}" Content="Зарегистрироваться"></Button>
 	</StackPanel>
 </UserControl>

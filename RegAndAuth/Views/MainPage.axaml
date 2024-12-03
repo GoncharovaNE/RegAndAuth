@@ -9,8 +9,8 @@
 	<StackPanel>
 		<TextBlock Classes="MainPage_Hi" Text="Добро пожаловать, пользователь! Чтобы перейти в личный кабинет необходимо авторизоваться."></TextBlock>
 		<Image Classes="MainPage_Im" Source="avares://RegAndAuth/Assets/welcome-back.png" HorizontalAlignment="Center"></Image>
-		<Button Classes="MyTB" Content="Авторизация" Command="{Binding ToAuthPage}" IsVisible="{Binding IsVisibleAuthBT}"></Button>
-		<Button Classes="MyTB" Content="Регистрация" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBT}"></Button>
-		<Button Classes="MyTB" Content="Зарегистрировать администратора" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBTAdmin}"></Button>
+		<Button Classes="MyBT" Content="Авторизация" Command="{Binding ToAuthPage}" IsVisible="{Binding IsVisibleAuthBT}"></Button>
+		<Button Classes="MyBT" Content="Регистрация" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBT}"></Button>
+		<Button Classes="MyBT" Content="Зарегистрировать администратора" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBTAdmin}"></Button>
 	</StackPanel>
 </UserControl>

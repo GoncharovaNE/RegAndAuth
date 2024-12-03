@@ -18,7 +18,7 @@
 		<Setter Property="FontWeight" Value="Bold"></Setter>
 	</Style>
 
-	<Style Selector="Button.MyTB">
+	<Style Selector="Button.MyBT">
 		<Setter Property="FontSize" Value="20"></Setter>
 		<Setter Property="FontStyle" Value="Italic"></Setter>
 		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -31,7 +31,7 @@
 		<Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
 	</Style>
 
-	<Style Selector="Button.MyTB:pointerover /template/ ContentPresenter">
+	<Style Selector="Button.MyBT:pointerover /template/ ContentPresenter">
 		<Setter Property="Background" Value="#EE9B01"></Setter>
 		<Setter Property="Foreground" Value="#14471E"></Setter>
 	</Style>
@@ -43,7 +43,7 @@
 		<Setter Property="Width" Value="250"></Setter>
 	</Style>
 
-	<Style Selector="TextBox">
+	<Style Selector="TextBox.MyTB">
 		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
 		<Setter Property="Margin" Value="0 20 0 0"></Setter>
 		<Setter Property="Background" Value="#EE9B01"></Setter>
