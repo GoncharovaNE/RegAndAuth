@@ -14,7 +14,7 @@
 
 	<StackPanel>
 		<StackPanel>
-			<TextBlock>
+			<TextBlock Classes="MainPage_Hi">
 				<TextBlock.Text>
 					<MultiBinding StringFormat="{} Добро пожаловать, {0} {1}">
 						<Binding Path="User.RoleNavigation.Namerole"/>
@@ -22,10 +22,10 @@
 					</MultiBinding>
 				</TextBlock.Text>
 			</TextBlock>
-			<Button Command="{Binding AddOnePhoto}">Изменить фото</Button>
-			<Button Command="{Binding ToMainPage}">Вернуться на главную страницу</Button>
-			<Image Height="300" Width="300" Source="{Binding User.Image,Converter={StaticResource MyConvertImage}}" HorizontalAlignment="Center"></Image>
-			<TextBlock Text="{Binding User.Fio}" HorizontalAlignment="Center"></TextBlock>
+			<Image Classes="MainPage_Im" Source="{Binding User.Image,Converter={StaticResource MyConvertImage}}"></Image>
+			<TextBlock Classes="MainPage_Hi" Text="{Binding User.Fio}"></TextBlock>
+			<Button Classes="MyTB" Command="{Binding AddOnePhoto}">Изменить фото</Button>
+			<Button Classes="MyTB" Command="{Binding ToMainPage}">Главное меню</Button>
 		</StackPanel>
 	</StackPanel>
 </UserControl>

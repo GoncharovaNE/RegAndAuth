@@ -6,5 +6,50 @@
     </Border>
   </Design.PreviewWith>
 
-  <!-- Add Styles Here -->
+	<Style Selector="StackPanel">
+		<Setter Property="Background" Value="#C8D2D1"></Setter>
+	</Style>
+	
+	<Style Selector="TextBlock.MainPage_Hi">
+		<Setter Property="FontSize" Value="15"></Setter>
+		<Setter Property="FontStyle" Value="Italic"></Setter>
+		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+		<Setter Property="Margin" Value="0 20 0 0"></Setter>
+		<Setter Property="FontWeight" Value="Bold"></Setter>
+	</Style>
+
+	<Style Selector="Button.MyTB">
+		<Setter Property="FontSize" Value="20"></Setter>
+		<Setter Property="FontStyle" Value="Italic"></Setter>
+		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+		<Setter Property="Margin" Value="0 20 0 0"></Setter>
+		<Setter Property="FontWeight" Value="Bold"></Setter>
+		<Setter Property="Background" Value="#68904D"></Setter>
+		<Setter Property="Foreground" Value="#14471E"></Setter>
+		<Setter Property="Height" Value="35"></Setter>
+		<Setter Property="Width" Value="250"></Setter>
+		<Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+	</Style>
+
+	<Style Selector="Button.MyTB:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="#EE9B01"></Setter>
+		<Setter Property="Foreground" Value="#14471E"></Setter>
+	</Style>
+
+	<Style Selector="Image.MainPage_Im">
+		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+		<Setter Property="Margin" Value="0 10 0 0"></Setter>
+		<Setter Property="Height" Value="250"></Setter>
+		<Setter Property="Width" Value="250"></Setter>
+	</Style>
+
+	<Style Selector="TextBox">
+		<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+		<Setter Property="Margin" Value="0 20 0 0"></Setter>
+		<Setter Property="Background" Value="#EE9B01"></Setter>
+		<Setter Property="Foreground" Value="#14471E"></Setter>
+		<Setter Property="Height" Value="35"></Setter>
+		<Setter Property="Width" Value="250"></Setter>
+		<Setter Property="FontWeight" Value="Bold"></Setter>
+	</Style>
 </Styles>

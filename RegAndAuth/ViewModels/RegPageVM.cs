@@ -29,21 +29,7 @@ namespace RegAndAuth.ViewModels
 
         string _newPassword;
 
-        public string NewPassword { get => _newPassword; set => _newPassword = value; }
-
-        string strBTReg;
-        public string StrBTReg 
-        { 
-            get
-            {
-                if (!UsersList.Any(x => x.Role == 1))
-                {
-                    return strBTReg = "Зарегистрировать администратора";
-                }
-                return strBTReg = "Зарегистрировать пользователя";
-            }
-            set => this.RaiseAndSetIfChanged(ref strBTReg, value); 
-        }
+        public string NewPassword { get => _newPassword; set => _newPassword = value; }       
 
         public async void Adduser()
         {

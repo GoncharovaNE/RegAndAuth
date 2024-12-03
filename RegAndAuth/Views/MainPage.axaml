@@ -6,12 +6,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegAndAuth.MainPage"
 			 x:DataType="vm:MainPageVM">
-	<Grid>
-		<StackPanel>
-			<TextBlock Text="Добро пожаловать, новый пользователь! Для дальнейшей работы необходимо авторизоваться или зарегестрироваться."></TextBlock>
-			<Button Content="Авторизация" Command="{Binding ToAuthPage}" IsVisible="{Binding IsVisibleAuthBT}"></Button>
-			<Button Content="Регистрация" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBT}"></Button>
-			<Button Content="Зарегистрировать администратора" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBTAdmin}"></Button>
-		</StackPanel>
-	</Grid>
+	<StackPanel>
+		<TextBlock Classes="MainPage_Hi" Text="Добро пожаловать, пользователь! Чтобы перейти в личный кабинет необходимо авторизоваться."></TextBlock>
+		<Image Classes="MainPage_Im" Source="avares://RegAndAuth/Assets/welcome-back.png" HorizontalAlignment="Center"></Image>
+		<Button Classes="MyTB" Content="Авторизация" Command="{Binding ToAuthPage}" IsVisible="{Binding IsVisibleAuthBT}"></Button>
+		<Button Classes="MyTB" Content="Регистрация" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBT}"></Button>
+		<Button Classes="MyTB" Content="Зарегистрировать администратора" Command="{Binding ToRegPage}" IsVisible="{Binding IsVisibleRegBTAdmin}"></Button>
+	</StackPanel>
 </UserControl>
