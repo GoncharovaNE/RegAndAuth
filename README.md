@@ -90,7 +90,7 @@
 ## Установка
 
 - **Откройте** один из браузеров: _Chrome_,_Opera_,_MicrosoftEdge_
-- **Перейдите** на сайт по ссылке: http://gogs.ngknn.ru:3000/GoncharovaNE33P/RegAndAuth.git
+- **Перейдите** на сайт по ссылке: [https://github.com/GoncharovaNE33P/RegAndAuth.git](https://github.com/GoncharovaNE33P/RegAndAuth.git)
 
 - **Скачайте** архивный файл (ZIP):
 <p class="fig">
@@ -100,4 +100,4 @@
 - **Разархивируйте** скаченный файл, запустите приложение, найдя и открыв файл **RegAndAuth.exe** в папке **net8.0** в архиве bin по следующему пути: _RegAndAuth >  bin > Debug > net8.0_
 
 ## Авторы
-- **Гончарова Надежда** - главный разработчик - [Профиль с другими проектами](http://gogs.ngknn.ru:3000/GoncharovaNE33P) 
+- **Гончарова Надежда** - главный разработчик - [Профиль с другими проектами](https://github.com/GoncharovaNE33P)
